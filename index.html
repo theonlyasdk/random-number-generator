@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Number Generator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #3e4a3c;
+			font-family: "Dosis", sans-serif;
+			overflow: hidden;
+			user-select: none;
+		}
+
+		div {
+			color: white;
+			text-align: center;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		h1 {
+			margin: 0;
+			text-align: center;
+			font-size: 40vh;
+			text-shadow: 1px 1px 14px #222222aa;
+			transition: all 400ms ease-out;
+		}
+
+		div.pressed {
+			background-color: #4a4e3a;
+		}
+
+		div.pressed > h1 {
+			font-size: 42vh;			
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<span><b>Warning: </b> Flashing lights</span>
+		<h1>0</h1>
+	</div>
+</body>
+<script>
+	const div = document.querySelector("div")
+	const heading = document.querySelector("h1")
+	const info = document.querySelector("span")
+	const body = document.body;
+
+	const random = () => {
+		heading.innerHTML = Math.floor(Math.random() * 10e+5)
+		div.classList.add("pressed")
+		setTimeout(() => div.classList.remove("pressed"), 30)		
+	}
+	body.addEventListener("keydown", random)
+	body.addEventListener("mousedown", random)
+	heading.addEventListener("click", () => {
+		navigator.clipboard.writeText(heading.innerHTML)
+		info.innerHTML = "<b>Copied to clipboard!</b>"
+	})
+</script>
+</html>
