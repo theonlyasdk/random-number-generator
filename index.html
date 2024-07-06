@@ -8,6 +8,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
 	<style>
+		html {
+			height: 100%;
+		}
+
 		body {
 			padding: 0;
 			margin: 0;
@@ -15,21 +19,23 @@
 			font-family: "Dosis", sans-serif;
 			overflow: hidden;
 			user-select: none;
+			display: flex;
+			height: 100%;
 		}
 
 		div {
 			color: white;
 			text-align: center;
-			height: 100vh;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
+			flex: 1;
 		}
 
 		h1 {
 			margin: 0;
 			text-align: center;
-			font-size: 40vh;
+			font-size: 10em;
 			text-shadow: 1px 1px 14px #222222aa;
 			transition: all 400ms ease-out;
 		}
@@ -62,6 +68,7 @@
 	}
 	body.addEventListener("keydown", random)
 	body.addEventListener("mousedown", random)
+	body.addEventListener("scroll", random)
 	heading.addEventListener("click", () => {
 		navigator.clipboard.writeText(heading.innerHTML)
 		info.innerHTML = "<b>Copied to clipboard!</b>"
